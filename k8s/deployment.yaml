@@ -16,7 +16,7 @@ spec:
       terminationGracePeriodSeconds: 30
       containers:
         - name: app
-          image: ghcr.io/abhiinfinia/demo_deployment:sha-7967390cdc034a3511e8473b2867ca043cce0ef6
+          image: ghcr.io/abhiinfinia/demo_deployment:sha-a947fd76f024e5e31e7fe97266a6ebe818735b9f
           ports:
             - name: http
               containerPort: 8080
