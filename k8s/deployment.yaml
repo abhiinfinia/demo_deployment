@@ -13,24 +13,34 @@ spec:
       labels:
         app: demo-deployment
     spec:
+      terminationGracePeriodSeconds: 30
       containers:
         - name: app
           image: ghcr.io/abhiinfinia/demo_deployment:sha-7967390cdc034a3511e8473b2867ca043cce0ef6
           ports:
             - name: http
               containerPort: 8080
+          startupProbe:
+            httpGet:
+              path: /health
+              port: http
+            periodSeconds: 5
+            timeoutSeconds: 3
+            failureThreshold: 12
           readinessProbe:
             httpGet:
               path: /health
               port: http
-            initialDelaySeconds: 3
             periodSeconds: 5
+            timeoutSeconds: 3
+            failureThreshold: 3
           livenessProbe:
             httpGet:
               path: /health
               port: http
-            initialDelaySeconds: 10
             periodSeconds: 10
+            timeoutSeconds: 3
+            failureThreshold: 3
           resources:
             requests:
               cpu: 50m
