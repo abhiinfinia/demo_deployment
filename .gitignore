@@ -1,0 +1,15 @@
+
+# Local Python environment
+.venv/
+
+# Local database and backups
+*.db
+*.sqlite
+*.sqlite3
+app.py.backup
+app.sqlite-backup.py
+
+# Local secrets
+.env
+.env.*
+!.env.example
